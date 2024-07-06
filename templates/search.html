@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+
+
+{% block main %}
+    <table class="">
+        <thead>
+            <th>Planet name</th>
+            <th>Host name</th>
+            <th>Discovery method</th>
+            <th>Discovery Year</th>
+            <th>Discovery Facility</th>
+        </thead>
+        <hr>
+        <tbody>
+            {% if planets %}
+                {% for planet in planets %}
+                    <tr>
+                        <td><a href="{{ planet.link }}">{{ planet.pl_name }}</a></td>
+                        <td>{{ planet.hostname }}</td>
+                        <td>{{ planet.discoverymethod }}</td>
+                        <td>{{ planet.disc_year }}</td>
+                        <td>{{ planet.disc_facility }}</td>
+                    </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

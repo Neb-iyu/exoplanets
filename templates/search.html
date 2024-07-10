@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
-
+{% block title %}Search{% endblock %}
 
 
 {% block main %}
-    <table class="">
+    <table class="table table-striped">
         <thead>
             <th>Planet name</th>
             <th>Host name</th>
@@ -16,12 +16,22 @@
             {% if planets %}
                 {% for planet in planets %}
                     <tr>
-                        <td><a href="{{ planet.link }}">{{ planet.pl_name }}</a></td>
+                        <td><a href="{{ planet.pl_refname|link }}">{{ planet.pl_name }}</a></td>
                         <td>{{ planet.hostname }}</td>
                         <td>{{ planet.discoverymethod }}</td>
                         <td>{{ planet.disc_year }}</td>
                         <td>{{ planet.disc_facility }}</td>
                     </tr>
+                {% endfor %}
+            {% elif planet %}
+                <tr>
+                    <td><a href="{{ planet.pl_refname|link }}">{{ planet.pl_name }}</a></td>
+                    <td>{{ planet.hostname }}</td>
+                    <td>{{ planet.discoverymethod }}</td>
+                    <td>{{ planet.disc_year }}</td>
+                    <td>{{ planet.disc_facility }}</td>
+                </tr>
+            {% endif %}
         </tbody>
     </table>
 

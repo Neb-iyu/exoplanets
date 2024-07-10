@@ -23,11 +23,22 @@ def binary_search(data, query):
 def look_up(data, query, id=False):
     x = []
     if id == True:
+        query = int(query)
         return data[query]
-    for planet in data:
-        if query in planet['pl_name'] or query in planet['hostname'] or query in planet['discoverymethod'] or query in planet['disc_year'] or query in planet['disc_facility']:
+    for id in data:
+        planet = data[id]
+        if query in planet['pl_name']: #or query in planet['hostname'] or query in planet['discoverymethod'] or query in planet['disc_year'] or query in planet['disc_facility']:
             x.append(planet)
     
     return x
+
+def link(l):
+    for i in range(len(l)):
+        if l[i:i+5] == 'https':
+            for j in range(i+4, len(l)):
+                if l[j] == ' ':
+                    return l[i:j-1]
+    return 'h'
+                
 
     
